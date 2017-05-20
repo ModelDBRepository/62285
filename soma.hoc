@@ -1,0 +1,25 @@
+xopen("$(NEURONHOME)/lib/hoc/noload.hoc")
+pwman_place(20,21)
+create soma
+access soma
+{diam=10  L=10} // area 100 um2 means mA/cm2 identical to nA 
+
+insert B_Na
+insert B_A
+insert B_DR
+insert KDR
+insert KDRI
+insert pas
+insert SS
+
+{
+load_file("electrod.hoc")
+//load_template("Inserter")
+//load_template("PointProcessManager")
+load_proc("nrnmainmenu")
+//nrnmainmenu()
+//makeinserter()
+//makeppm()
+xopen("$(NEURONHOME)/Demo/b/check-na.ses")
+forall Ra=80
+}
