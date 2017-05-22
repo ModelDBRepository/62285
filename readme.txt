@@ -47,3 +47,21 @@ Once the model has started press Init&Run to generate fig 7A (left).
 Click on the IClamp button and adjust the current to 0.030 nA
 and press Init&Run for the middle fig 7A, and then 0.12 nA and press
 Init&Run for fig 7A (right).
+
+5/17/2017  Revised by N.T. Carnevale.  As noted by the senior author
+in the readme.html file for ModelDB entry 62284 which is associated
+with the paper
+
+Melnick IV, Santos SF, Safronov BV (2004)
+Mechanism of spike frequency adaptation in substantia gelatinosa
+neurones of rat. J Physiol 559:383-95 
+
+in the original implementation of this model assigning a value of 6.3 
+to the parameter "celsius" corresponded to an actual operating temperature
+of 23 deg C.  In this new revision of the model, the value assigned to 
+celsius is identical to the operating temperature, i.e. a value of 23
+means 23 deg C.  The motivation for the current revision is to facilitate 
+future attributed reuse of this model and the mechanisms that it employs
+by promoting conceptual clarity and making sure that this code "plays nicely"
+with other models that involve temperature-dependent mechanisms.
+

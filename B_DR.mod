@@ -2,6 +2,12 @@ TITLE HH k channel channel
 : Hodgkin - Huxley k channel
 
 : The model used in Safronov et al. 2000 
+:
+: 5/17/2017  Revised by N.T. Carnevale for the sake of conceptual clarity
+: and to facilitate attributed reuse.
+: In this version, the reference temperature is 23 deg C
+: and the value assigned to celsius is the actual operating temperature
+: in degrees celsius.
 
 NEURON {
 	SUFFIX B_DR
@@ -21,7 +27,8 @@ PARAMETER {
 	dt (ms)
 	gkbar=0 (mho/cm2) <0,1e9>
 	ek = -84 (mV)
-	celsius = 6.3 (degC)
+:	celsius = 6.3 (degC)
+	celsius = 23 (degC) : actual operating temperature
 }
 STATE {
 	n
@@ -53,13 +60,15 @@ PROCEDURE states() {	: exact when v held constant
 UNITSOFF
 FUNCTION alp(v(mV)) { LOCAL q10
 	v = v
-	q10 = 3^((celsius - 6.3)/10)
+:	q10 = 3^((celsius - 6.3)/10)
+	q10 = 3^((celsius - 23)/10) : actual reference temperature
 	alp = q10 * .0075*expM1(-v - 30, 10)
 }
 
 FUNCTION bet(v(mV)) { LOCAL q10
 	v = v
-	q10 = 3^((celsius - 6.3)/10)
+:	q10 = 3^((celsius - 6.3)/10)
+	q10 = 3^((celsius - 23)/10) : actual reference temperature
 	bet = q10 * .1*exp((-v - 46)/31)
 }
 

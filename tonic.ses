@@ -1,3 +1,11 @@
+/*
+5/17/2017  Revised by N.T. Carnevale for the sake of conceptual clarity
+and to facilitate attributed reuse.
+In this version, the reference temperature is 23 deg C
+and the value assigned to celsius is the actual operating temperature
+in degrees celsius.
+*/
+
 objectvar save_window_, rvp_
 objectvar scene_vector_[4]
 objectvar ocbox_, ocbox_list_, scene_, scene_list_
@@ -27,7 +35,8 @@ xpanel("NEURON Main Panel", 0)
 xcheckbox("Quiet",&stdrun_quiet,"")
 realtime = 6
 xvalue("Real Time","realtime", 0,"", 0, 1 )
-celsius = 6.3
+// celsius = 6.3
+celsius = 23 // actual operating temperature
 xvalue("celsius","celsius", 1,"", 0, 1 )
 global_ra = 80
 xvalue("Axial Resistivity","global_ra", 1,"set_ra()", 1, 1 )

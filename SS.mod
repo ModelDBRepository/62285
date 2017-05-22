@@ -2,6 +2,12 @@ TITLE HH sodium channel
 : Hodgkin - Huxley squid sodium channel
 
 : The model used in Safronov et al. 2000
+:
+: 5/17/2017  Revised by N.T. Carnevale for the sake of conceptual clarity
+: and to facilitate attributed reuse.
+: In this version, the reference temperature is 23 deg C
+: and the value assigned to celsius is the actual operating temperature
+: in degrees celsius.
 
 NEURON {
 	SUFFIX SS
@@ -18,7 +24,8 @@ UNITS {
 INDEPENDENT {t FROM 0 TO 1 WITH 1 (ms)}
 PARAMETER {
 	v (mV)
-	celsius = 6.3	(degC)
+:	celsius = 6.3	(degC)
+	celsius = 23 (degC) : actual operating temperature
 	dt (ms)
 	gnabar=0 (mho/cm2) <0,1e9>
 	ena = 53 (mV)
@@ -55,7 +62,8 @@ PROCEDURE states() {	: exact when v held constant
 UNITSOFF
 FUNCTION alp(v(mV),i) { LOCAL a,b,c,q10 :rest = -70  order m,h
 	v = v :convert to hh convention
-	q10 = 3^((celsius - 6.3)/10)
+:	q10 = 3^((celsius - 6.3)/10)
+	q10 = 3^((celsius - 23)/10) : actual reference temperature
 	if (i==0) {
 		alp = q10* 1 *.182*expM1(-v - 45, 9)
 	}else if (i==1){
@@ -67,7 +75,8 @@ FUNCTION alp(v(mV),i) { LOCAL a,b,c,q10 :rest = -70  order m,h
 
 FUNCTION bet(v,i) { LOCAL a,b,c,q10 :rest = -70  order m,h
 	v = v 
-	q10 = 3^((celsius - 6.3)/10)
+:	q10 = 3^((celsius - 6.3)/10)
+	q10 = 3^((celsius - 23)/10) : actual reference temperature
 	if (i==0) {
 		bet = q10* 1 *.124*expM1(v + 45, 9)
 	}else if (i==1){
